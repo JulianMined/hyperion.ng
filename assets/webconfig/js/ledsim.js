@@ -60,6 +60,7 @@ $(document).ready(function() {
 	
 	function updateLedLayout()
 	{
+		console.log(serverConfig);
 		//calculate body size
 		var canvas_height = $('#ledsim_dialog').outerHeight()-$('#ledsim_text').outerHeight()-$('[data-role=footer]').outerHeight()-$('[data-role=header]').outerHeight()-40;
 		var canvas_width = $('#ledsim_dialog').outerWidth()-30;
@@ -77,6 +78,15 @@ $(document).ready(function() {
 				"height:"+((led.vscan.maximum-led.vscan.minimum) * canvas_height-1)+"px;";
 			leds_html += '<div id="'+led_id+'" class="led" style="'+bgcolor+pos+'" title="'+led.index+'"><span id="'+led_id+'_num" class="led_num">'+led.index+'</span></div>';
 		}
+		var grabberV4L2 = serverConfig.grabberV4L2[0];
+		if(grabberV4L2 && grabberV4L2['signalDetection']){
+			var left = grabberV4L2.sDHOffsetMin*100;
+			var right = grabberV4L2.sDHOffsetMax*100-left;
+			var top = grabberV4L2.sDVOffsetMin*100;
+			var bottom = grabberV4L2.sDVOffsetMax*100-top;
+			leds_html += '<div style="position:absolute;left:'+left+'%;width:'+right+'%;top:'+top+'%;height:'+bottom+'%;border:1px solid #FFF;box-shadow: 0 0 3px 1px #080808;"/>';
+		}
+		
 		$('#leds_canvas').html(leds_html);
 		
 		if($('#leds_toggle_num').hasClass('btn-success'))
