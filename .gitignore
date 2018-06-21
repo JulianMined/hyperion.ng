@@ -18,3 +18,4 @@ CMakeCache.txt
 /lib
 .directory
 *.pyc
+.vscode/

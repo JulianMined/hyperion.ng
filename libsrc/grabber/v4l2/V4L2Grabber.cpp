@@ -232,6 +232,8 @@ void V4L2Grabber::stop()
 {
 	if (_streamNotifier != nullptr && _streamNotifier->isEnabled())
 	{
+		Debug(_log, "V4L2Grabber::stop");
+
 		stop_capturing();
 		_streamNotifier->setEnabled(false);
 		Info(_log, "Stopped");
@@ -819,7 +821,6 @@ void V4L2Grabber::process_image(const uint8_t * data)
 		unsigned xMax     = image.width()  * _x_frac_max;
 		unsigned yMax     = image.height() * _y_frac_max;
 
-
 		for (unsigned x = xOffset; noSignal && x < xMax; ++x)
 		{
 			for (unsigned y = yOffset; noSignal && y < yMax; ++y)
@@ -852,6 +853,7 @@ void V4L2Grabber::process_image(const uint8_t * data)
 			_noSignalDetected = false;
 			Info(_log, "Signal lost");
 		}
+
 	}
 	else
 	{

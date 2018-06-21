@@ -81,6 +81,7 @@ void V4L2Wrapper::readError(const char* err)
 
 void V4L2Wrapper::checkSources()
 {
+	/*Debug(_log, "%d %d", _priority, _hyperion->getCurrentPriority());
 	if ( _hyperion->isCurrentPriority(_priority))
 	{
 		_grabber.start();
@@ -88,7 +89,7 @@ void V4L2Wrapper::checkSources()
 	else
 	{
 		_grabber.stop();
-	}
+	}*/
 }
 
 void V4L2Wrapper::action()

@@ -40,7 +40,7 @@
 			{
 				"type" : "string",
 				"title" : "edt_conf_v4l2_standard_title",
-				"enum" : ["PAL","NTSC","SECAM"],
+				"enum" : ["PAL","NTSC","SECAM", "no-change"],
 				"default" : "PAL",
 				"options" : {
 					"enum_titles" : ["edt_conf_enum_PAL", "edt_conf_enum_NTSC", "edt_conf_enum_SECAM"]
